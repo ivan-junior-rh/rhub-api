@@ -15,7 +15,9 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python }}
-      - name: Install Tox
-        run: pip install tox
-      - name: Run Tox
-        run: tox
+      - name: Run pylinter
+        run: docker run --rm -v $PWD/tests/:/opt/app-root/src/tests/ quay.io/resource-hub-dev/rhub-api:test
+      #- name: Install Tox
+      #  run: pip install tox
+      #- name: Run Tox
+      #  run: tox
